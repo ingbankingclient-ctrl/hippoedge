@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "HippoEdge",
+    "slug": "hippoedge",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "ios": {"supportsTablet": true, "bundleIdentifier": "com.hippoedge.app"},
+    "android": {"package": "com.hippoedge.app"},
+    "web": {"bundler": "metro"}
+  }
+}

@@ -1,0 +1,12 @@
+services:
+  api:
+    build: ./backend
+    env_file: .env
+    ports: ["8000:8000"]
+    volumes:
+      - hippoedge_data:/data
+    environment:
+      HIPPOEDGE_DATABASE_URL: sqlite:////data/hippoedge.db
+    restart: unless-stopped
+volumes:
+  hippoedge_data:
