@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: hippoedge-api
+    runtime: docker
+    plan: free
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: HIPPOEDGE_ENVIRONMENT
+        value: production
+      - key: HIPPOEDGE_PROVIDER
+        value: pmu
+      - key: HIPPOEDGE_DATABASE_URL
+        sync: false
+      - key: HIPPOEDGE_CORS_ORIGINS
+        value: "*"
+
+  - type: web
+    name: hippoedge-mobile
+    runtime: static
+    rootDir: mobile
+    buildCommand: npm ci && npm run build:web
+    staticPublishPath: ./dist
+    envVars:
+      - key: EXPO_PUBLIC_API_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
